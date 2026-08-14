@@ -1,0 +1,43 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Página-1" id="a_Ug7AFcCChuZ-v8Baxc">
+    <mxGraphModel dx="1276" dy="644" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="sedes" parent="1" style="shape=table;childLayout=tableContainer;collapsible=1;headerStyle=backgroundColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;align=center;verticalAlign=middle;spacingLeft=5;spacingRight=5;fontSize=12;" value="SEDES&#xa;--------------------------&#xa;PK id_sede (INT)&#xa;nombre (VARCHAR)&#xa;ubicacion (VARCHAR)" vertex="1">
+          <mxGeometry height="100" width="180" x="70" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="clientes" parent="1" style="shape=table;childLayout=tableContainer;collapsible=1;headerStyle=backgroundColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;align=center;verticalAlign=middle;spacingLeft=5;spacingRight=5;fontSize=12;" value="CLIENTES&#xa;--------------------------&#xa;PK id_cliente (INT)&#xa;nombre (VARCHAR)&#xa;nit_cc (VARCHAR)" vertex="1">
+          <mxGeometry height="100" width="180" x="610" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="pedidos" parent="1" style="shape=table;childLayout=tableContainer;collapsible=1;headerStyle=backgroundColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;align=center;verticalAlign=middle;spacingLeft=5;spacingRight=5;fontSize=12;" value="PEDIDOS&#xa;--------------------------&#xa;PK id_pedido (INT)&#xa;FK id_sede (INT)&#xa;FK id_cliente (INT)&#xa;fecha (DATE)" vertex="1">
+          <mxGeometry height="110" width="180" x="320" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="productos" parent="1" style="shape=table;childLayout=tableContainer;collapsible=1;headerStyle=backgroundColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;align=center;verticalAlign=middle;spacingLeft=5;spacingRight=5;fontSize=12;" value="PRODUCTOS&#xa;--------------------------&#xa;PK id_producto (INT)&#xa;nombre (VARCHAR)&#xa;precio (DECIMAL)&#xa;stock (INT)" vertex="1">
+          <mxGeometry height="110" width="180" x="100" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="detalle_pedido" parent="1" style="shape=table;childLayout=tableContainer;collapsible=1;headerStyle=backgroundColor=#f8cecc;strokeColor=#b85450;fontStyle=1;align=center;verticalAlign=middle;spacingLeft=5;spacingRight=5;fontSize=12;" value="DETALLE_PEDIDO&#xa;--------------------------&#xa;PK id_detalle (INT)&#xa;FK id_pedido (INT)&#xa;FK id_producto (INT)&#xa;cantidad (INT)&#xa;subtotal (DECIMAL)" vertex="1">
+          <mxGeometry height="130" width="180" x="320" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="auditoria" parent="1" style="shape=table;childLayout=tableContainer;collapsible=1;headerStyle=backgroundColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;align=center;verticalAlign=middle;spacingLeft=5;spacingRight=5;fontSize=12;" value="AUDITORIA_PRECIOS&#xa;--------------------------&#xa;PK id_auditoria (INT)&#xa;FK id_producto (INT)&#xa;precio_anterior (DECIMAL)&#xa;precio_nuevo (DECIMAL)" vertex="1">
+          <mxGeometry height="110" width="190" x="350" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" edge="1" parent="1" source="sedes" style="endArrow=ERmany;startArrow=ERone;html=1;rounded=0;exitX=0.5;exitY=1;entryX=0.25;entryY=0;" target="pedidos">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" edge="1" parent="1" source="clientes" style="endArrow=ERmany;startArrow=ERone;html=1;rounded=0;exitX=0.5;exitY=1;entryX=0.75;entryY=0;" target="pedidos">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" edge="1" parent="1" source="pedidos" style="endArrow=ERmany;startArrow=ERone;html=1;rounded=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="detalle_pedido">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" edge="1" parent="1" source="productos" style="endArrow=ERmany;startArrow=ERone;html=1;rounded=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="detalle_pedido">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c5" edge="1" parent="1" source="productos" style="endArrow=ERmany;startArrow=ERone;html=1;rounded=0;exitX=1;exitY=0.8;entryX=0;entryY=0.5;" target="auditoria">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
