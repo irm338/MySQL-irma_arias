@@ -1,0 +1,32 @@
+
+
+CREATE TABLE IF NOT EXISTS auditoria_pedidos(
+    id_auditoria INT AUTO_INCREMENT PRIMARY KEY,
+    id_pedido INT,
+    id_cliente INT,
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMO,-- TIMESTAMP DEFAULT - ASIGNA AUTOMATICAMENTE LAS FECHAS Y HORAS EXACTAS--
+    total_pedido DECIMAL (10, 2),
+    usuario_responsable VARCHAR(100)
+);
+
+DELIMITER //
+
+CREATE TRIGGER registrar_nuevo_pedido_trigger
+AFTER INSERT ON pedidos
+FOR EACH ROW
+BEGIN
+    INSERT INTO auditoria_pedidos(
+        id_pedido,
+        id_cliente,
+        id_registro,
+        total_pedido,
+        usuario_responsable
+
+    )
+    VALUES (
+        NEW.id,
+        NEW.id_cliente,
+        NOW(),
+        NEW.total,
+        USER()
+    );

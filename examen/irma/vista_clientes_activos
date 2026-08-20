@@ -1,0 +1,13 @@
+
+CREATE VIEW vista_clientes_activos AS
+SELECT
+    c.id AS id_cliente,
+    c.nombre AS nombre_clientte,
+    COUNT(p.id) AS total_pedido, 
+    SUM(p.total) AS valor_total_comprodo
+
+
+FROM cliente C
+INNER JOIN pedidos p ON c.id_cliente
+WHERE p.fecha_pedido >= DATE_SUB(CURDATE(), INTERVAL 90 DAY) --  INTERVAL--ES PARA RESTAR--
+GROUP BY c.id, c.nombre;
